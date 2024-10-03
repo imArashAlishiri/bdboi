@@ -236,6 +236,12 @@ border: 1px solid rgba(255, 255, 255, 0.36);
     align-items: center;
 }
 
+.appear {
+    opacity: 0;
+    transition-duration: .5s;
+    font-size: 1.4rem;
+}
+
 
 .quiz-box, .quiz li {
     opacity: 0;
@@ -247,13 +253,17 @@ border: 1px solid rgba(255, 255, 255, 0.36);
     transition-delay: 3s;
 }
 .quiz-two {
-    transition-delay: 4s;
-}
-.quiz-three {
     transition-delay: 5s;
 }
+.quiz-three {
+    transition-delay: 7s;
+}
+.appear-show {
+    opacity: 1;
+    transition-delay: 8s;
+}
 .quiz-four {
-    transition-delay: 6s;
+    transition-delay: 9s;
 }
 
 .show-quiz {
@@ -263,6 +273,13 @@ border: 1px solid rgba(255, 255, 255, 0.36);
 
 .quiz-green {
     background-color: rgba(0, 128, 0, 0.386) !important;
+}
+.btn-green {
+    background-color: rgba(0, 128, 0, 0.386) !important;
+}
+
+.btn-red {
+    background-color: rgba(128, 0, 0, 0.386) !important;
 }
 
 

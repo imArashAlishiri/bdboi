@@ -3,11 +3,14 @@ const pages = document.querySelector('.main');
 const rideBtn = document.querySelector('.intro-ride');
 const moreBtn = document.querySelector('.intro-more');
 const captchaBtn = document.querySelector('.captcha-btn');
-const QuizBtn = document.querySelectorAll('.quiz li');
-const QuizBox = document.querySelector('.quiz-box');
+const QuizBtn1 = document.querySelectorAll('.quiz-box1 li');
+const QuizBox1 = document.querySelector('.quiz-box1');
+const QuizBtn2 = document.querySelectorAll('.quiz-box2 li');
+const QuizBox2 = document.querySelector('.quiz-box2');
+
 
 const compliments = {
-    1: `I mean, I don't really know you, even making this website feels a little stalky and weird but, you're fun to talk to and know a lot about everything. you have a talent for breaking things down into simple digestable pieces, you're easy going and down to earth so talking to you feels like talking to just a dude but you're also more than that. I think we can all collectively agree the world is a better place with a Cyril in it. This is supposed to be your day, the day you age another year, get a chance to experience life as a more mature cyril and also, get closer to death by a year, so enjoy it `,
+    1: `I mean, I don't really know you, even making this website feels a little stalky and weird but, you're fun to talk to and know a lot about everything. You have a talent for breaking things down into simple digestible pieces, you're easy going and down to earth. I think we can all collectively agree the world is a better place with a Cyril in it. This is supposed to be your day, the day you age another year, get a chance to experience life as a more mature cyril and also, you're a year closer to death so enjoy it.`,
     2: `uhhh, alright. OmG cYrIl YoU'Re So CoOl, I bEt YoU'D CaUsE An ExPlOsIon JuSt tO NoT LoOk At It`,
     3: `Bruh, more? get yourself a room, a mirror and a bottle of lotion dude.`,
     4: `Get help, jesus. `,
@@ -19,7 +22,7 @@ let current = 0;
 let complimentCount = 1;
 let typeSpeed = 25;
 let pagePos = 0;
-
+let quizNum = 1;
 
 
 
@@ -166,21 +169,38 @@ captchaBtn.addEventListener('click', captcha);
 // ========================== quize
 
 function showQuiz() {
-    QuizBox.classList.add('show-quiz');
-    QuizBtn.forEach(btn => {
+    QuizBox1.classList.add('show-quiz');
+    QuizBtn1.forEach(btn => {
         btn.classList.add('show-quiz');
-        btn.addEventListener('click', quizClicked);
+        btn.addEventListener('click', nextQuiz);
     })
+    document.querySelector('.appear').classList.add('appear-show');
+}
+
+
+function nextQuiz() {
+    QuizBox2.classList.add('show-quiz');
+    document.querySelectorAll('.quiz-box1 li').forEach(btn => {
+        btn.classList.add('delay');
+        if (btn.classList.contains('correct')) {
+            btn.classList.add('btn-green')
+        } else {
+            btn.classList.add('btn-red');
+        }
+    })
+
+    setTimeout(nextPage, 2000);
+    setTimeout(showQuiz2, 3000);
 }
 
 function quizClicked() {
-    QuizBtn.forEach(btn => {
+    QuizBtn2.forEach(btn => {
         btn.classList.add('delay')
         btn.classList.add('quiz-green')
         setTimeout(() => {
             document.querySelector('.popup').classList.add('none');
             document.querySelector('.popup-close').addEventListener('click', showGame);
-        }, 300)
+        }, 1000)
     })
 
 }
@@ -190,8 +210,14 @@ function quizClicked() {
 
 
 
+function showQuiz2() {
+    QuizBox2.classList.add('show-quiz');
+    QuizBtn2.forEach(btn => {
+        btn.classList.add('show-quiz');
+        btn.addEventListener('click', quizClicked);
+    })
 
-
+}
 
 
 
